@@ -7,23 +7,35 @@ using CSC2110::ListArray;
 
 Password::Password()
 {
-    
+   viable_words = new ListArray<String>();
+   all_words = new ListArray<String>();
+   len = 0;
 }
 
 Password::~Password()
 {
-
+  delete viable_words;
+  delete all_words;
 }
 
 void Password::addWord(String* word)
 {
 	//viable_words is a ListArray<String>* variable which has an add function.
-	viable_words->add(word); 
+	
+	if (len == 0) len = word->length();
+
+    if(word->length() == len)
+	{
+	   viable_words->add(word); 
+	   all_words->add(word);
+	}
+	
+	
 }
 
 void Password::guess(int try_password, int num_matches)
 {
-	ListArray<String>* temp; //Temp ListArray that will contain new viable_words.
+	ListArray<String>* temp = new ListArray<String>(); //Temp ListArray that will contain new viable_words.
 	String* word_guessed = getOriginalWord(try_password); //Covert index to String* for getNumMatches()
 	
 	
