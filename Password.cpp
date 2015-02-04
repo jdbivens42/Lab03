@@ -1,14 +1,58 @@
 #include "Password.h"
-using CSC2110::ListArrayIterator;
-
 #include <iostream>
+
 using namespace std;
+using CSC2110::ListArrayIterator;
+using CSC2110::ListArray;
 
+Password::Password()
+{
+    
+}
 
+Password::~Password()
+{
 
+}
 
+void Password::addWord(String* word)
+{
+	//viable_words is a ListArray<String>* variable which has an add function.
+	viable_words->add(word); 
+}
 
-
+void Password::guess(int try_password, int num_matches)
+{
+	ListArray<String>* temp; //Temp ListArray that will contain new viable_words.
+	String* word_guessed = getOriginalWord(try_password); //Covert index to String* for getNumMatches()
+	
+	
+	//Need to iterate through each item in viable_words.
+	//Used bestGuess as example:
+	ListArrayIterator<String>* viable_iter = viable_words->iterator();
+    String* curr_word; //Declare ADT outside of loops to prevent constructor overhead.
+	
+	while(viable_iter->hasNext())
+    {
+	   curr_word = viable_iter->next(); //Need a variable to hold next() as calling changes the state of iterator
+	   
+	   //Currently, getNumMatches does not exist yet.
+	   if (num_matches == getNumMatches(curr_word, word_guessed)); 
+	      temp->add(curr_word);  //We found a possible password within the list of viable_words. Add this to temp.
+	}
+	//Delete the iterator (see bestGuess())
+	delete viable_iter;
+	
+	//Delete the old viable_words. This deallocates the memory that holds the actual
+	//ListArray, not the pointer itself.
+	delete viable_words;
+	
+	//Now viable_words is a dangling pointer.
+	//Give viable_words the address of the ListArray that temp points to.
+	viable_words = temp; 
+	
+	//Let the pointer named temp expire (end of scope). Now viable_words does not have an alias.
+}
 
 
 
