@@ -2,8 +2,13 @@
 //fill in includes, don't forget namespaces
 
 #include <iostream>
+#include "Keyboard.h"
+#include "ReadFile.h"
+#include "WriteFile.h"
 using namespace std;
-
+using CSC2110::Keyboard;
+using CSC2110::ReadFile;
+using CSC2110::WriteFile;
 void addWords(Password* fh)
 {
    Keyboard* kb = Keyboard::getKeyboard();
