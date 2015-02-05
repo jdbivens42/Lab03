@@ -58,10 +58,12 @@ void Password::guess(int try_password, int num_matches)
 	
 	while(viable_iter->hasNext())
     {
+	   
 	   curr_word = viable_iter->next(); //Need a variable to hold next() as calling changes the state of iterator
 	   
+	   
 	   //Currently, getNumMatches does not exist yet.
-	   if (num_matches == getNumMatches(curr_word, word_guessed)); 
+	   if (num_matches == getNumMatches(curr_word, word_guessed))
 	      temp->add(curr_word);  //We found a possible password within the list of viable_words. Add this to temp.
 	}
 	//Delete the iterator (see bestGuess())
@@ -78,7 +80,7 @@ void Password::guess(int try_password, int num_matches)
 	//Let the pointer named temp expire (end of scope). Now viable_words does not have an alias.
 }
 
-String* getOriginalWord(int index)
+String* Password::getOriginalWord(int index)
 {
    return all_words->get(index);
 }
@@ -88,7 +90,8 @@ void Password::displayViableWords()
    ListArrayIterator<String>* viable_iter = viable_words->iterator();
    while(viable_iter->hasNext())
    {
-      cout << viable_iter->next() << endl;
+     viable_iter->next()->displayString();
+	 cout << endl;
    }
    delete viable_iter;
 }
