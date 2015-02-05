@@ -83,10 +83,20 @@ String* getOriginalWord(int index)
    return all_words->get(index);
 }
 
+void Password::displayViableWords()
+{
+   ListArrayIterator<String>* viable_iter = viable_words->iterator();
+   while(viable_iter->hasNext())
+   {
+      cout << viable_iter->next() << endl;
+   }
+   delete viable_iter;
+}
 
-
-
-
+int Password::getNumberOfPasswordsLeft()
+{
+   return viable_words->size();
+}
 
 int Password::bestGuess()
 {
