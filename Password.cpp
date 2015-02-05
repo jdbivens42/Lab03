@@ -21,11 +21,12 @@ Password::~Password()
 int Password::getNumMatches(String* curr_word, String* word_guess)
 {
 	int char_matches = 0;
+	
 	for(int i = 0; i<len; i++)
-		{
-			if (curr_word->charAt(i) == word_guess->charAt(i))
-			char_matches++;
-		}
+	   {
+		   if (curr_word->charAt(i) == word_guess->charAt(i))
+			   char_matches++;
+	   }
 	return char_matches;
 }
 
@@ -75,6 +76,11 @@ void Password::guess(int try_password, int num_matches)
 	viable_words = temp; 
 	
 	//Let the pointer named temp expire (end of scope). Now viable_words does not have an alias.
+}
+
+String* getOriginalWord(int index)
+{
+   return all_words->get(index);
 }
 
 
