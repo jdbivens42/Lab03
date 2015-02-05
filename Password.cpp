@@ -18,6 +18,17 @@ Password::~Password()
   delete all_words;
 }
 
+int Password::getNumMatches(String* curr_word, String* word_guess)
+{
+	int char_matches = 0;
+	for(int i = 0; i<len; i++)
+		{
+			if (curr_word->charAt(i) == word_guess->charAt(i))
+			char_matches++;
+		}
+	return char_matches;
+}
+
 void Password::addWord(String* word)
 {
 	//viable_words is a ListArray<String>* variable which has an add function.
