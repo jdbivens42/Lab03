@@ -13,6 +13,7 @@ void addWords(Password* fh)
 {
    Keyboard* kb = Keyboard::getKeyboard();
    String* file_str = kb->readString("Enter the file name containing the possible passwords: ");
+   cout << endl;
    ReadFile* rf = new ReadFile(file_str->getText());
    delete file_str;
 

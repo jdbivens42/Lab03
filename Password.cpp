@@ -5,19 +5,22 @@ using namespace std;
 using CSC2110::ListArrayIterator;
 using CSC2110::ListArray;
 
-Password::Password()
+// This is the Password class constructor
+Password::Password() 
 {
    viable_words = new ListArray<String>();
    all_words = new ListArray<String>();
    len = 0;
 }
 
-Password::~Password()
+//This is the Password class destructor
+Password::~Password() 
 {
   delete viable_words;
   delete all_words;
 }
 
+// Gets the number of character matches between the word that was guessed and the current word being compared
 int Password::getNumMatches(String* curr_word, String* word_guess)
 {
 	int char_matches = 0;
@@ -30,6 +33,7 @@ int Password::getNumMatches(String* curr_word, String* word_guess)
 	return char_matches;
 }
 
+// Adds words of correct (the same) lengths to viable_words and all_words ListArrays
 void Password::addWord(String* word)
 {
 	//viable_words is a ListArray<String>* variable which has an add function.
@@ -45,14 +49,14 @@ void Password::addWord(String* word)
 	
 }
 
+// Updates viable_words with words that are currently viable
 void Password::guess(int try_password, int num_matches)
 {
 	ListArray<String>* temp = new ListArray<String>(); //Temp ListArray that will contain new viable_words.
 	String* word_guessed = getOriginalWord(try_password); //Covert index to String* for getNumMatches()
 	
 	
-	//Need to iterate through each item in viable_words.
-	//Used bestGuess as example:
+	//Need to iterate through each item in viable_words
 	ListArrayIterator<String>* viable_iter = viable_words->iterator();
     String* curr_word; //Declare ADT outside of loops to prevent constructor overhead.
 	
@@ -62,7 +66,6 @@ void Password::guess(int try_password, int num_matches)
 	   curr_word = viable_iter->next(); //Need a variable to hold next() as calling changes the state of iterator
 	   
 	   
-	   //Currently, getNumMatches does not exist yet.
 	   if (num_matches == getNumMatches(curr_word, word_guessed))
 	      temp->add(curr_word);  //We found a possible password within the list of viable_words. Add this to temp.
 	}
