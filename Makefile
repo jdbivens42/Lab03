@@ -2,7 +2,7 @@ AutomatedMakefile = am
 CC = g++
 
 FILES = Password.o PasswordDriver.o
-EXECUTABLE = Test.exe
+EXECUTABLE = Fallout_3_Lab03.exe
 
 PROJECT_PATH = $(PROJECT_DIR)
 

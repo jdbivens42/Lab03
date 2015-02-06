@@ -39,7 +39,7 @@ void guessWords(Password* fh)
       int best_guess_index = fh->bestGuess();
 
       String* best_guess_word = fh->getOriginalWord(best_guess_index);
-      cout << "You should guess \"";
+      cout << "\n\nYou should guess \"";
       best_guess_word->displayString();
       cout << "\" at index " << best_guess_index;
       cout << endl << endl;
